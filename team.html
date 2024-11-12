@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Game Studio - Team</title>
+  <style>
+    /* Initial background with image */
+    body {
+      font-family: Arial, sans-serif;
+      color: #cba1ff;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+      transition: background 0.3s;
+    }
+
+    /* Solid color background when class is active */
+    body.solid-background {
+      background-image: none;
+    }
+
+    header { text-align: center; padding: 20px;  }
+    .team-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Three equal-width columns */
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .team-member {
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .team-member img {
+      width: 100%;
+      border-radius: 50%; /* Makes the image circular */
+      max-width: 150px;
+      margin-bottom: 10px;
+    }
+    .team-member h3 { margin: 10px 0 5px; }
+    .team-member p { font-size: 0.9em; color: #666; }
+    .social-links a {
+      margin: 0 5px;
+      text-decoration: none;
+      color: #007bff;
+    }
+  </style>
+</head>
+<body class="solid-background">
+
+<!-- Header -->
+<header>
+  <p>Meet the Team</p>
+</header>
+
+<!-- Team Section -->
+<div class="team-container">
+  <div class="team-member">
+    <img src="Images/mads.png" alt="Member 1">
+    <h3>Madeline</h3>
+    <p>Project Director</p>
+    <div class="social-links">
+      <a href="https://www.madelinez.com/" target="_blank">Website</a>
+    </div>
+    <p>Mastermind behind Late Fee.</p>
+  </div>
+
+  <div class="team-member">
+    <img src="Images/steph.jpg" alt="Member 2">
+    <h3>Stephanie</h3>
+    <p>Technical Lead</p>
+    <div class="social-links">
+      <a href="https://github.com/StephanieRct" target="_blank">Github</a>
+    </div>
+    <p>100x programmer.</p>
+  </div>
+
+  <div class="team-member">
+    <img src="Images/zid.PNG" alt="Member 3">
+    <h3>Zi Di</h3>
+    <p>Designer & Developer</p>
+    <div class="social-links">
+      <a href="https://zidizhu.github.io/portfolio/" target="_blank">Website</a>
+    </div>
+    <p>Prolific idea come-upper.</p>
+  </div>
+</div>
+
+</body>
+</html>

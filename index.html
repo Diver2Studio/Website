@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diver 2 Studio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('Images/Diver2-logo.gif');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+        body.solid-background {
+            background-image: none;
+            background-color: #4e5ae2; /* Light gray or any color you prefer */
+        }
+        header { text-align: center; padding: 20px; background-color: #333; color: #fff; }
+        nav { display: flex; justify-content: center; margin: 20px 0; }
+        nav a { margin: 0 15px; color: #cba1ff; text-decoration: none; }
+        nav a:hover { color: rgba(0, 51, 255, 0.8); }
+        #content-frame {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+        .team-container, .gallery-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .team-member, .screenshot { width: 200px; text-align: center; }
+        .team-member img, .screenshot img { width: 100%; border-radius: 5px; }
+    </style>
+
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <h1>Diver 2 Studio</h1>
+    <nav>
+<!--        <a href="about.html" target="content-frame" onclick="navigateToSection()">About</a>-->
+<!--        <a href="projects.html" target="content-frame" onclick="navigateToSection()">Projects</a>-->
+        <a href="gallery.html" target="content-frame" onclick="navigateToSection()">Gallery</a>
+        <a href="team.html" target="content-frame" onclick="navigateToSection()">Team</a>
+    </nav>
+</header>
+
+<iframe id="content-frame" name="content-frame" src=""></iframe>
+
+<script>
+    let autoNavigateTimeout;
+
+    // Function to set solid background
+    function setSolidBackground() {
+        document.body.classList.add('solid-background');
+    }
+
+    // Function to handle navigation and cancel the timeout
+    function navigateToSection() {
+        clearTimeout(autoNavigateTimeout); // Cancel auto-navigation if link is clicked
+        setSolidBackground();
+    }
+
+    // Set auto-navigation to About page after 2 seconds
+    window.addEventListener("load", function() {
+        autoNavigateTimeout = setTimeout(() => {
+            document.getElementById("content-frame").src = "about.html";
+            setSolidBackground();
+        }, 4000);
+    });
+</script>
+
+</body>
+</html>

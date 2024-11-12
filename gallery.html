@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Game Studio - Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header { text-align: center; }
+
+    /* Gallery grid */
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Three columns */
+      gap: 15px;
+      padding: 20px;
+      max-width: 1200px;
+      height: 100%;
+      margin: 0 auto;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .gallery-item img:hover {
+      transform: scale(1.05); /* Slight zoom on hover */
+    }
+
+    /* Fullscreen overlay */
+    .fullscreen-overlay {
+      display: none; /* Hidden by default */
+      position: fixed;
+      background-color: rgba(0, 0, 0, 0.82);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    /* Fullscreen image styling */
+    .fullscreen-overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+    }
+
+    /* Close button */
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: #fff;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.6);
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      z-index: 1001;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <h1>Late Fee</h1>
+</header>
+
+<!-- Gallery -->
+<div class="gallery-container">
+  <div class="gallery-item">
+    <img src="Images/latefee/latefee_01.png" alt="Screenshot 1" onclick="openFullscreen(this)"> <!-- Replace with your images -->
+  </div>
+  <div class="gallery-item">
+    <img src="Images/latefee/latefee_02.png" alt="Screenshot 2" onclick="openFullscreen(this)">
+  </div>
+  <div class="gallery-item">
+    <img src="Images/latefee/latefee_03.png" alt="Screenshot 3" onclick="openFullscreen(this)">
+  </div>
+  <div class="gallery-item">
+    <img src="Images/latefee/latefee_04.png" alt="Screenshot 1" onclick="openFullscreen(this)"> <!-- Replace with your images -->
+  </div>
+  <div class="gallery-item">
+    <img src="Images/latefee/latefee_05.png" alt="Screenshot 2" onclick="openFullscreen(this)">
+  </div>
+  <div class="gallery-item">
+    <img src="Images/latefee/latefee_06.png" alt="Screenshot 3" onclick="openFullscreen(this)">
+  </div>
+</div>
+
+<!-- Fullscreen Overlay -->
+<div class="fullscreen-overlay" id="fullscreenOverlay">
+  <button class="close-btn" onclick="closeFullscreen()">X</button>
+  <img src="" alt="Fullscreen Image" id="fullscreenImage">
+</div>
+
+
+<script>
+  // Function to open an image in fullscreen
+  function openFullscreen(imgElement) {
+    const overlay = document.getElementById("fullscreenOverlay");
+    const fullscreenImg = document.getElementById("fullscreenImage");
+    fullscreenImg.src = imgElement.src; // Set fullscreen image source to clicked image
+    overlay.style.display = "flex"; // Show overlay
+  }
+
+  // Function to close fullscreen mode
+  function closeFullscreen() {
+    const overlay = document.getElementById("fullscreenOverlay");
+    overlay.style.display = "none"; // Hide overlay
+  }
+</script>
+
+</body>
+</html>
