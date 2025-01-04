@@ -14,22 +14,22 @@
             margin: 0;
             padding: 0;
         }
-        body.solid-background {
-            background-image: none;
-            background-color: #4e5ae2; /* Light gray or any color you prefer */
-        }
-        header { text-align: center; padding: 20px; background-color: #333; color: #fff; }
+        header { text-align: center; height: 15vh; width: 100vw; top:0px; position: absolute; background-color: #333; color: #fff; }
         nav { display: flex; justify-content: center; margin: 20px 0; }
-        nav a { margin: 0 15px; color: #cba1ff; text-decoration: none; }
+        nav a {
+            margin: 0 15px;
+            color: #cba1ff;
+            text-decoration: none;
+        }
         nav a:hover { color: rgba(0, 51, 255, 0.8); }
         #content-frame {
             width: 100%;
-            height: 600px;
+            top:15vh;
+            position: absolute;
+            height: 85vh;
             border: none;
         }
-        .team-container, .gallery-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-        .team-member, .screenshot { width: 200px; text-align: center; }
-        .team-member img, .screenshot img { width: 100%; border-radius: 5px; }
+        .team-member img, .screenshot img { width: 100%;  }
     </style>
 
 </head>
@@ -39,8 +39,6 @@
 <header>
     <h1>Diver 2 Studio</h1>
     <nav>
-<!--        <a href="about.html" target="content-frame" onclick="navigateToSection()">About</a>-->
-<!--        <a href="projects.html" target="content-frame" onclick="navigateToSection()">Projects</a>-->
         <a href="gallery.html" target="content-frame" onclick="navigateToSection()">Gallery</a>
         <a href="team.html" target="content-frame" onclick="navigateToSection()">Team</a>
     </nav>
@@ -65,7 +63,7 @@
     // Set auto-navigation to About page after 2 seconds
     window.addEventListener("load", function() {
         autoNavigateTimeout = setTimeout(() => {
-            document.getElementById("content-frame").src = "about.html";
+            document.getElementById("content-frame").src = "gallery.html";
             setSolidBackground();
         }, 4000);
     });
