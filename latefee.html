@@ -17,9 +17,34 @@
             aspect-ratio: 16/9;
             object-fit: contain;
         }
-        .slide{
-            display: none;
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: opacity 1.5s; /* Smooth transition for fading */
         }
+
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        .fade-out {
+            animation-name: fade-out;
+            animation-duration: 1.5s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fade {
+            from { opacity: 0.1; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fade-out {
+            from { opacity: 1; }
+            to { opacity: 0.1; }
+        }
+
         /* The dots/bullets/indicators */
         .dot {
             cursor: pointer;
@@ -33,14 +58,6 @@
         }
         .active, .dot:hover {
             background-color: #717171;
-        }
-        .fade {
-            animation-name: fade;
-            animation-duration: 0.5s;
-        }
-        @keyframes fade {
-            from {opacity: .4}
-            to {opacity: 1}
         }
 
 
@@ -115,32 +132,67 @@
     </div>
 </div>
 <script>
-    let slideIndex = 1;
-    showSlides(slideIndex);
+    let slideIndex = 0;
+    showSlides();
 
+    var interval;
+
+    // Next/previous controls
     function plusSlides(n) {
-        showSlides(slideIndex += n);
+        slideIndex+=n;
+        let slides = document.getElementsByClassName("slide");
+        if (slideIndex>=slides.length) slideIndex =0;
+        if (slideIndex< 0) slideIndex = slides.length-1;
+
+        showSlides();
     }
 
+    // Thumbnail image controls
     function currentSlide(n) {
-        showSlides(slideIndex = n);
+        slideIndex = n-1;
+        showSlides();
     }
 
-    function showSlides(n) {
-        let i;
+    // Main function to display slides
+    function showSlides() {
+        setautoplay();
         let slides = document.getElementsByClassName("slide");
         let dots = document.getElementsByClassName("dot");
-        if (n > slides.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
+
+        for (let i = 0; i < slides.length; i++) {
+            if (slides[i].style.display === "block") {
+                slides[i].classList.add("fade-out"); // Add fade-out effect
+                setTimeout(() => {
+                    slides[i].style.display = "none"; // Hide after fade-out
+                    slides[i].classList.remove("fade-out"); // Clean up fade-out class
+                }, 1500); // Match fade-out animation-duration in CSS
+            } else {
+                slides[i].style.display = "none"; // Hide non-active slides
+            }
         }
-        for (i = 0; i < dots.length; i++) {
+
+        for (let i = 0; i < dots.length; i++) {
             dots[i].className = dots[i].className.replace(" active", "");
         }
-        slides[slideIndex-1].style.display = "block";
-        dots[slideIndex-1].className += " active";
+
+        // Show the current slide with fade-in effect
+        slides[slideIndex ].style.display = "block";
+        slides[slideIndex].classList.add("fade");
+        dots[slideIndex].className += " active";
     }
+
+    function setautoplay(){
+        clearInterval(interval);
+        interval = setInterval(() => {
+            plusSlides(1);
+        }, 4500);
+    }
+
+    setautoplay();
+
+    // Automatically switch slides every 5 seconds
+
+
 </script>
 </body>
 </html>
